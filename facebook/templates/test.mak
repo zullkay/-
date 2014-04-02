@@ -1,52 +1,32 @@
-<!--
-  vim: ft=javascript
- -->
-
 <html>
-<head></head>
+<head>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link href="/static/jquery.lighter.css" rel="stylesheet" type="text/css" />
+<link href="/static/navbar-fixed-top.css" rel="stylesheet" type="text/css" />
+</head>
+
 <body>
-<div id="fb-root"></div>
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId      : '296283050520635',
-            status     : true, // check login status
-            cookie     : true, // enable cookies to allow the server to access the session
-            xfbml      : true  // parse XFBML
-        });
 
-        FB.Event.subscribe('auth.authResponseChange', function(response) {
-            if (response.status === 'connected') {
-                testAPI();
-            } else if (response.status === 'not_authorized') {
-                FB.login();
-            } else {
-                FB.login();
-            }
-        });
-    };
+<div class="container">
 
-    // Load the SDK asynchronously
-    (function(d){
-        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement('script'); js.id = id; js.async = true;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        ref.parentNode.insertBefore(js, ref);
-    }(document));
+		<div class="jumbotron">
+			<p>
+			<!-- <div id="mygallery" ><ul class="imglist clearfix"> </ul></div> -->
+			</p>
+			<!-- <div id="fb-root"></div> -->
+			<p>
+			<!-- <fb:login-button show-faces="true" width="200" max-rows="2" scope="user_photos"></fb:login-button> -->
+			</p>
+		</div>
 
-    function testAPI() {
-        console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
-            console.log('Good to see you, ' + response.name + '.');
-        });
-    }
-</script>
+</div>
 
-<!--
-  Below we include the Login Button social plugin. This button uses the JavaScript SDK to
-  present a graphical Login button that triggers the FB.login() function when clicked. -->
 
-<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="/static/fb.js"></script>
+<script src="/static/jquery.lighter.js" type="text/javascript"></script>
+
 </body>
 </html>
