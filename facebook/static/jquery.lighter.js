@@ -1,1 +1,0 @@
-jquery-lighter/javascripts/jquery.lighter.js
