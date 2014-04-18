@@ -8,7 +8,7 @@ function photos_all() {
         "query2": "SELECT pid, images, src, src_small, src_big, caption, created, backdated_time, owner FROM photo WHERE owner = me() limit 1000"}}, 
         function(response){
             if (response && !response.error) {
-                console.log(response);
+                //console.log(response);
                 draw_thumbs(response.data[0].fql_result_set);
             } else {
                 console.log(response.message);
@@ -21,11 +21,11 @@ function photos_range(from_ts, to_ts) {
     FB.api(
         "/fql", 
         {q:{
-        "query1": "SELECT pid, images, src, src_small, src_big, caption, created, backdated_time, owner FROM photo WHERE owner = me() and created between " + from_ts + " and " + to_ts + " limit 1000", 
+        "query1": "SELECT pid, images, src, src_small, src_big, caption, created, backdated_time, owner FROM photo WHERE owner = me() and created >= " + from_ts + " and created < " + to_ts + " limit 1000", 
         "query2": "SELECT pid, images, src, src_small, src_big, caption, created, backdated_time, owner FROM photo WHERE owner = me() limit 1000"}}, 
         function(response){
             if (response && !response.error) {
-                console.log(response);
+                //console.log(response);
                 draw_thumbs(response.data[0].fql_result_set);
             } else {
                 console.log(response);
@@ -52,6 +52,11 @@ function all_album_name() {
 function draw_thumbs(data) {
     var o = {};
     var i = 1;
+    $("#thumbnails .clearfix > li").remove();
+
+    var spinner = new Spinner().spin();
+    $("#thumbnails .clearfix").append(spinner.el);
+
     $(data).each(function() {
 
         var album_caption = "";
@@ -97,11 +102,11 @@ function draw_navibar(data) {
 
         $.each(months, function(month, value) {
             if ($('#' + year + '_' + month).length) {
-                console.log(year + '/' + month + 'exists');
+                //console.log(year + '/' + month + 'exists');
             } else {
                 //console.log(month);
                 $('#' + year + ' > ul').append(
-          "<li><a href=\"#" + year + month + "\" class=\"range_photo\" id=" + year + '_' + month + " data-year=" + year + " data-month=" + month + ">" + month + "月</a><span class=\"badge pull-right\">" + value + "</span></li>");
+          "<li><a href=\"#\" class=\"range_photo\" id=" + year + '_' + month + " data-year=" + year + " data-month=" + month + ">" + month + "月</a><span class=\"badge pull-right\">" + value + "</span></li>");
             }
         });
 

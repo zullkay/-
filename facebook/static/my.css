@@ -9,3 +9,6 @@
   background-color: #eee;
 }
 
+.selected {
+  color: red;   
+}

@@ -34,6 +34,11 @@ window.fbAsyncInit = function() {
 
 
 $('.col-md-2').on('click', 'a.range_photo', function() {
+
+    // link color
+    $('a.range_photo').removeClass('selected');
+    $(this).addClass('selected');
+
     var year  = $(this).data('year');
     var month = $(this).data('month');
     console.log(year);

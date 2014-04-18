@@ -35,6 +35,7 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script> -->
+<script src="//fgnass.github.io/spin.js/spin.min.js"></script>
 <script src="/static/fb.js"></script>
 <script src="/static/l.js"></script>
 <script src="/static/lightbox2/js/lightbox.min.js"></script>
