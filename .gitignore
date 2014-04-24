@@ -1,6 +1,8 @@
 *swp
 *pyc
 __pycache__
+build
+dist
 facebook/static/lightbox2/
 facebook/static/jquery.waiting/
  

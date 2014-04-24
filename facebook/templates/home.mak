@@ -39,9 +39,7 @@
 <script src="/static/jquery.waiting/dist/jquery.waiting.min.js"></script>
 <script src="/static/fb.js"></script>
 
-${settings}
-${settings.production_deployment}
-% if settings.production_deployment == True:
+% if settings.production_deployment == 'True':
 <script src="/static/2.js"></script>
 % else:
 <script src="/static/1.js"></script>
