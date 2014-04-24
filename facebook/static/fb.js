@@ -4,10 +4,7 @@ function photos_all() {
     FB.api(
         '/fql',
         {q: {
-        'query1': 'SELECT pid, images, src, src_small, src_big, caption, ' +
-          ' created, backdated_time, owner FROM photo WHERE owner = me()' +
-          ' limit 1000',
-        'query2': 'SELECT pid, images, src, src_small, src_big, caption,' +
+        'query': 'SELECT pid, images, src, src_small, src_big, caption, ' +
           ' created, backdated_time, owner FROM photo WHERE owner = me()' +
           ' limit 1000'}
         },
@@ -30,12 +27,9 @@ function photos_range(from_ts, to_ts) {
     FB.api(
         '/fql',
         {q: {
-        'query1': 'SELECT pid, images, src, src_small, src_big, caption,' +
+        'query': 'SELECT pid, images, src, src_small, src_big, caption,' +
           ' created, backdated_time, owner FROM photo WHERE owner = me()' +
           ' and created >= ' + from_ts + ' and created < ' + to_ts +
-          ' limit 1000',
-        'query2': 'SELECT pid, images, src, src_small, src_big, caption,' +
-          ' created, backdated_time, owner FROM photo WHERE owner = me()' +
           ' limit 1000'}
         },
         function(response) {
