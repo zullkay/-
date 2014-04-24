@@ -1,6 +1,6 @@
 from pyramid.view import view_config
 
-@view_config(route_name='1home', renderer='1home.mak')
+@view_config(route_name='home', renderer='home.mak')
 def index(request):
     settings = request.registry.settings
     #print(settings)

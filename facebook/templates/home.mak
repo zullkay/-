@@ -49,5 +49,4 @@
 <script src="/static/lightbox2/js/lightbox.min.js"></script>
 
 </body>
-
 </html>
