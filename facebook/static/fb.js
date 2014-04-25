@@ -1,11 +1,31 @@
 
-
 function photos_all() {
     FB.api(
         '/fql',
         {q: {
         'query': 'SELECT pid, images, src, src_small, src_big, caption, ' +
           ' created, backdated_time, owner FROM photo WHERE owner = me()' +
+          ' limit 1000'}
+        },
+        function(response) {
+            if (response && !response.error) {
+                //console.log(response);
+                var o = draw_thumbs(response.data[0].fql_result_set);
+                draw_navibar(o);
+            } else {
+                console.log(response.message);
+            }
+        }
+    );
+}
+
+function photos_append(pid) {
+    FB.api(
+        '/fql',
+        {q: {
+        'query': 'SELECT pid, images, src, src_small, src_big, caption, ' +
+          ' created, backdated_time, owner FROM photo WHERE owner = me()' +
+          ' and pid < ' + pid +
           ' limit 1000'}
         },
         function(response) {
@@ -22,7 +42,6 @@ function photos_all() {
 function photos_range(from_ts, to_ts) {
     // loading animation
     $('#thumbnails > .clearfix').waiting({ position: 'center center' });
-    //$('#thumbnails > .clearfix').waiting({ fixed: true }); // whole page
 
     FB.api(
         '/fql',
@@ -34,7 +53,8 @@ function photos_range(from_ts, to_ts) {
         },
         function(response) {
             if (response && !response.error) {
-                draw_thumbs(response.data[0].fql_result_set);
+                var o = draw_thumbs(response.data[0].fql_result_set);
+                draw_navibar(o);
             } else {
                 console.log(response);
             }
@@ -44,6 +64,7 @@ function photos_range(from_ts, to_ts) {
 
 }
 
+/*
 function all_album_name() {
     FB.api(
         '/fql',
@@ -57,11 +78,11 @@ function all_album_name() {
         }
     );
 }
+*/
 
 function draw_thumbs(data) {
-    var o = {};
+    var o = {}; // navibar list data
     $('#thumbnails .clearfix > li').remove();
-    //$('.spinner').fadeOut().remove();
 
     var f = function() {
         $('#thumbnails .clearfix > li').fadeIn();
@@ -107,9 +128,7 @@ function draw_thumbs(data) {
 
     });
     //console.log(o);
-    //$('#thumbnails .clearfix > li').fadeIn();
-
-    draw_navibar(o);
+    return o;
 }
 
 function draw_navibar(data) {
@@ -138,5 +157,6 @@ function draw_navibar(data) {
         });
 
     });
+    return true;
 }
 

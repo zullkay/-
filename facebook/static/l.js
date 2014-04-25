@@ -19,7 +19,6 @@ window.fbAsyncInit = function() {
     FB.Event.subscribe('auth.statusChange', function(response) {
         if (response.status === 'connected') {
             photos_all();
-            //all_album_name();
         }
     });
 };
@@ -47,11 +46,4 @@ $('.col-sm-3').on('click', 'a.range_photo', function() {
     photos_range(from_timestamp, to_timestamp);
 });
 
-
-/*
-$(function() {
-    var spinner = new Spinner().spin();
-    $('#thumbnails .clearfix').append(spinner.el);
-});
-*/
 
